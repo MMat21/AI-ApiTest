@@ -1,0 +1,371 @@
+[
+  {
+    "id": "TC001",
+    "name": "用户登录-正常场景-admin成功登录",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "admin",
+      "password": "123456"
+    },
+    "expected_status": 200
+  },
+  {
+    "id": "TC002",
+    "name": "用户登录-边界值-用户名长度最小值3",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "abc",
+      "password": "123456"
+    },
+    "expected_status": 401
+  },
+  {
+    "id": "TC003",
+    "name": "用户登录-边界值-用户名长度最小值-1即2",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "ab",
+      "password": "123456"
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC004",
+    "name": "用户登录-边界值-用户名长度最大值20",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "aaaaaaaaaaaaaaaaaaaa",
+      "password": "123456"
+    },
+    "expected_status": 401
+  },
+  {
+    "id": "TC005",
+    "name": "用户登录-边界值-用户名长度最大值+1即21",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "aaaaaaaaaaaaaaaaaaaaa",
+      "password": "123456"
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC006",
+    "name": "用户登录-边界值-密码长度最小值6",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "admin",
+      "password": "123456"
+    },
+    "expected_status": 200
+  },
+  {
+    "id": "TC007",
+    "name": "用户登录-边界值-密码长度最小值-1即5",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "admin",
+      "password": "12345"
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC008",
+    "name": "用户登录-边界值-密码长度最大值16",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "admin",
+      "password": "1234567890123456"
+    },
+    "expected_status": 401
+  },
+  {
+    "id": "TC009",
+    "name": "用户登录-边界值-密码长度最大值+1即17",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "admin",
+      "password": "12345678901234567"
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC010",
+    "name": "用户登录-参数缺失-用户名缺失",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "password": "123456"
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC011",
+    "name": "用户登录-参数缺失-密码缺失",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "admin"
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC012",
+    "name": "用户登录-参数缺失-用户名和密码均为空",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "",
+      "password": ""
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC013",
+    "name": "用户登录-类型错误-用户名为数字类型",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": 123,
+      "password": "123456"
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC014",
+    "name": "用户登录-类型错误-密码为数字类型",
+    "method": "POST",
+    "path": "/login",
+    "body": {
+      "username": "admin",
+      "password": 123456
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC015",
+    "name": "查询用户-正常场景-user_id为1",
+    "method": "GET",
+    "path": "/users/1",
+    "body": null,
+    "expected_status": 200
+  },
+  {
+    "id": "TC016",
+    "name": "查询用户-正常场景-user_id为100",
+    "method": "GET",
+    "path": "/users/100",
+    "body": null,
+    "expected_status": 200
+  },
+  {
+    "id": "TC017",
+    "name": "查询用户-边界值-user_id最小值-1即0",
+    "method": "GET",
+    "path": "/users/0",
+    "body": null,
+    "expected_status": 404
+  },
+  {
+    "id": "TC018",
+    "name": "查询用户-边界值-user_id最大值+1即101",
+    "method": "GET",
+    "path": "/users/101",
+    "body": null,
+    "expected_status": 404
+  },
+  {
+    "id": "TC019",
+    "name": "查询用户-边界值-user_id为负数-1",
+    "method": "GET",
+    "path": "/users/-1",
+    "body": null,
+    "expected_status": 404
+  },
+  {
+    "id": "TC020",
+    "name": "查询用户-类型错误-user_id为非整数abc",
+    "method": "GET",
+    "path": "/users/abc",
+    "body": null,
+    "expected_status": 404
+  },
+  {
+    "id": "TC021",
+    "name": "创建订单-正常场景-合法参数",
+    "method": "POST",
+    "path": "/orders",
+    "body": {
+      "product_id": 1,
+      "quantity": 1
+    },
+    "expected_status": 201
+  },
+  {
+    "id": "TC022",
+    "name": "创建订单-正常场景-quantity为5",
+    "method": "POST",
+    "path": "/orders",
+    "body": {
+      "product_id": 100,
+      "quantity": 5
+    },
+    "expected_status": 201
+  },
+  {
+    "id": "TC023",
+    "name": "创建订单-边界值-quantity最小值-1即0",
+    "method": "POST",
+    "path": "/orders",
+    "body": {
+      "product_id": 1,
+      "quantity": 0
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC024",
+    "name": "创建订单-边界值-quantity最大值10",
+    "method": "POST",
+    "path": "/orders",
+    "body": {
+      "product_id": 1,
+      "quantity": 10
+    },
+    "expected_status": 201
+  },
+  {
+    "id": "TC025",
+    "name": "创建订单-边界值-quantity最大值+1即11",
+    "method": "POST",
+    "path": "/orders",
+    "body": {
+      "product_id": 1,
+      "quantity": 11
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC026",
+    "name": "创建订单-参数缺失-product_id缺失",
+    "method": "POST",
+    "path": "/orders",
+    "body": {
+      "quantity": 1
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC027",
+    "name": "创建订单-参数缺失-quantity缺失",
+    "method": "POST",
+    "path": "/orders",
+    "body": {
+      "product_id": 1
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC028",
+    "name": "创建订单-参数缺失-两个参数均缺失",
+    "method": "POST",
+    "path": "/orders",
+    "body": {},
+    "expected_status": 400
+  },
+  {
+    "id": "TC029",
+    "name": "创建订单-类型错误-quantity为字符串",
+    "method": "POST",
+    "path": "/orders",
+    "body": {
+      "product_id": 1,
+      "quantity": "abc"
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC030",
+    "name": "创建订单-类型错误-quantity为浮点数",
+    "method": "POST",
+    "path": "/orders",
+    "body": {
+      "product_id": 1,
+      "quantity": 1.5
+    },
+    "expected_status": 400
+  },
+  {
+    "id": "TC031",
+    "name": "商品列表-正常场景-默认参数",
+    "method": "GET",
+    "path": "/products",
+    "body": null,
+    "expected_status": 200
+  },
+  {
+    "id": "TC032",
+    "name": "商品列表-边界值-page最小值1",
+    "method": "GET",
+    "path": "/products?page=1&size=10",
+    "body": null,
+    "expected_status": 200
+  },
+  {
+    "id": "TC033",
+    "name": "商品列表-边界值-page最小值-1即0",
+    "method": "GET",
+    "path": "/products?page=0&size=10",
+    "body": null,
+    "expected_status": 400
+  },
+  {
+    "id": "TC034",
+    "name": "商品列表-边界值-size最大值50",
+    "method": "GET",
+    "path": "/products?page=1&size=50",
+    "body": null,
+    "expected_status": 200
+  },
+  {
+    "id": "TC035",
+    "name": "商品列表-边界值-size最大值+1即51",
+    "method": "GET",
+    "path": "/products?page=1&size=51",
+    "body": null,
+    "expected_status": 400
+  },
+  {
+    "id": "TC036",
+    "name": "商品列表-边界值-size最小值-1即0",
+    "method": "GET",
+    "path": "/products?page=1&size=0",
+    "body": null,
+    "expected_status": 400
+  },
+  {
+    "id": "TC037",
+    "name": "商品列表-类型错误-page为非整数",
+    "method": "GET",
+    "path": "/products?page=abc&size=10",
+    "body": null,
+    "expected_status": 400
+  },
+  {
+    "id": "TC038",
+    "name": "商品列表-类型错误-size为非整数",
+    "method": "GET",
+    "path": "/products?page=1&size=abc",
+    "body": null,
+    "expected_status": 400
+  }
+]
